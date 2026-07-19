@@ -1,0 +1,22 @@
+/* Aktivierung in fix/webfonts nach Lizenzerwerb — Dateinamen und Format (WOFF2) dann ggf. anpassen. Bis dahin rendert der Fallback-Stack aus tokens.css. */
+
+/*
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/ftx55.otf') format('opentype');
+  font-weight: 700;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/futura-boo.otf') format('opentype');
+  font-weight: 400;
+  font-display: block;
+}
+@font-face {
+  font-family: 'Futura';
+  src: url('/fonts/futura-lig.otf') format('opentype');
+  font-weight: 300;
+  font-display: block;
+}
+*/
