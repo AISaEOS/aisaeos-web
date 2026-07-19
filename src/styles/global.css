@@ -18,3 +18,275 @@ body {
 p {
   max-width: 70ch;
 }
+
+/* Reserved space for the fixed status bar */
+body {
+  padding-bottom: 42px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-pink);
+}
+
+/* Wordmark */
+.wordmark button {
+  font-size: 56px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-logo);
+  color: var(--color-fg);
+}
+
+/* Icon row */
+.icon-nav {
+  display: flex;
+  gap: 28px;
+}
+
+.icon-nav svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.icon-nav button {
+  position: relative;
+  color: var(--color-fg);
+  animation: icon-rest 4.2s ease-in-out infinite alternate;
+}
+
+@keyframes icon-rest {
+  from { opacity: 1; }
+  to { opacity: 0.88; }
+}
+
+.icon-nav button:hover,
+.icon-nav button:focus-visible {
+  color: var(--color-pink);
+}
+
+.icon-nav button.is-active {
+  padding: 7px;
+  border: 1.5px solid var(--color-fg);
+}
+
+.icon-nav button.is-active::after {
+  content: '';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-lila);
+}
+
+/* Panel anatomy — the stage mirrors the document sections */
+.panel-tag,
+.stage-tag {
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+  letter-spacing: var(--tracking-caps);
+}
+
+.panel-title,
+.stage-title {
+  font-size: 42px;
+  line-height: var(--leading-display);
+  font-weight: var(--font-weight-bold);
+}
+
+.panel-meta,
+.stage-meta {
+  font-size: 14px;
+  font-weight: var(--font-weight-light);
+}
+
+.panel-meta,
+.panel-projects {
+  padding: 0;
+  list-style: none;
+}
+
+.panel-meta {
+  display: flex;
+  gap: 14px;
+}
+
+/* Document flow (machine readers and no-JS view) */
+main {
+  width: 100%;
+  max-width: 70ch;
+  padding: 56px 21px;
+}
+
+main > section + section {
+  margin-top: 56px;
+}
+
+main section > * + * {
+  margin-top: 14px;
+}
+
+/* Stage skeleton */
+.stage {
+  max-width: 70ch;
+}
+
+.stage > * + * {
+  margin-top: 14px;
+}
+
+/* Home dot (mobile panel state) */
+.home-dot {
+  display: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--color-lila);
+}
+
+/* Status bar */
+.statusbar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 21px;
+  background: var(--color-bg);
+  font-size: 14px;
+}
+
+.statusbar-status {
+  display: flex;
+  justify-self: center;
+  gap: 14px;
+  color: var(--color-gruen);
+  font-weight: var(--font-weight-light);
+}
+
+.statusbar-lang {
+  display: flex;
+  gap: 14px;
+}
+
+.statusbar-lang button:hover,
+.statusbar-lang button:focus-visible {
+  color: var(--color-pink);
+}
+
+.legal-line {
+  position: relative;
+  justify-self: center;
+  color: var(--color-gray-50);
+  font-weight: var(--font-weight-light);
+}
+
+.legal-line::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 1.5px;
+  background: var(--color-pink);
+  opacity: 0;
+}
+
+.legal-line:hover span,
+.legal-line:focus-visible span {
+  opacity: 0;
+}
+
+.legal-line:hover::after,
+.legal-line:focus-visible::after {
+  opacity: 1;
+}
+
+/* Experience layer — only with JavaScript (html.js).
+   Sections stay visually hidden but readable: clip pattern, never display none. */
+html.js main > section {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+html.js main {
+  padding: 0;
+  max-width: none;
+}
+
+html.js body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Ground state */
+html.js body.is-ground {
+  justify-content: center;
+  gap: 42px;
+}
+
+html.js body.is-ground .stage {
+  display: none;
+}
+
+/* Panel state */
+html.js body.is-panel {
+  gap: 42px;
+  padding-top: 28px;
+}
+
+html.js body.is-panel .wordmark button {
+  font-size: 28px;
+}
+
+/* Mobile */
+@media (pointer: coarse), (max-width: 600px) {
+  html.js body .wordmark {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  html.js body.is-panel .home-dot {
+    display: block;
+  }
+}
+
+@media (max-width: 350px) {
+  .statusbar {
+    grid-template-columns: 1fr auto;
+    row-gap: 7px;
+    padding: 7px 21px;
+  }
+
+  .legal-line {
+    grid-column: 1 / -1;
+  }
+
+  body {
+    padding-bottom: 84px;
+  }
+}
