@@ -1,0 +1,63 @@
+{
+  "meta": { "lang": "de", "version": "V001" },
+  "panels": {
+    "0001": {
+      "tag": "SYSTEM · ONLINE",
+      "tagNight": "SYS:NACHT",
+      "title": "Platzhalter-Titel — Modul M12",
+      "body": ["Platzhaltertext. Der endgültige Text folgt in Modul M12."],
+      "meta": ["PLATZHALTER", "V001"]
+    },
+    "0002": {
+      "tag": "ÜBER",
+      "tagNight": "SYS:NACHT",
+      "title": "Platzhalter-Titel — Modul M12",
+      "body": ["Platzhaltertext. Der endgültige Text folgt in Modul M12."],
+      "meta": ["PLATZHALTER", "V001"]
+    },
+    "0003": {
+      "tag": "WERTE",
+      "tagNight": "SYS:NACHT",
+      "title": "Platzhalter-Titel — Modul M12",
+      "body": ["Platzhaltertext. Der endgültige Text folgt in Modul M12."],
+      "meta": ["PLATZHALTER", "V001"]
+    },
+    "0004": {
+      "tag": "PROJEKTE",
+      "tagNight": "SYS:NACHT",
+      "title": "Platzhalter-Titel — Modul M12",
+      "body": ["Platzhaltertext. Der endgültige Text folgt in Modul M12."],
+      "meta": ["PLATZHALTER", "V001"],
+      "projects": [
+        { "name": "Diese Website", "status": "live", "display": "" },
+        { "name": "Ein zweites Projekt ist in Arbeit. Details folgen.", "status": "in Arbeit", "display": "" }
+      ]
+    },
+    "0005": {
+      "tag": "PRODUKTE",
+      "tagNight": "SYS:NACHT",
+      "title": "Platzhalter-Titel — Modul M12",
+      "body": ["Platzhaltertext. Der endgültige Text folgt in Modul M12."],
+      "meta": ["PLATZHALTER", "V001"]
+    }
+  },
+  "legal": {
+    "lines": [
+      "AISaEOS Oy",
+      "c/o Philip Wagner, Ahvenanmaankatu 2 H 34, 20740 Turku, Finland",
+      "Y-tunnus 3412141-7",
+      "ALV-nro FI34121417",
+      "Kotipaikka Turku"
+    ],
+    "email": "contact@aisaeos.com"
+  },
+  "a11y": {
+    "0001": "System",
+    "0002": "Über",
+    "0003": "Werte",
+    "0004": "Projekte",
+    "0005": "Produkte",
+    "legal": "Rechtliche Angaben",
+    "home": "Zurück zum Start"
+  }
+}

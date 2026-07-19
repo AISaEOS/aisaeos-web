@@ -1,0 +1,63 @@
+{
+  "meta": { "lang": "en", "version": "V001" },
+  "panels": {
+    "0001": {
+      "tag": "SYSTEM · ONLINE",
+      "tagNight": "SYS:NACHT",
+      "title": "Placeholder title — module M12",
+      "body": ["Placeholder copy. Final text follows in module M12."],
+      "meta": ["PLACEHOLDER", "V001"]
+    },
+    "0002": {
+      "tag": "ABOUT",
+      "tagNight": "SYS:NACHT",
+      "title": "Placeholder title — module M12",
+      "body": ["Placeholder copy. Final text follows in module M12."],
+      "meta": ["PLACEHOLDER", "V001"]
+    },
+    "0003": {
+      "tag": "VALUES",
+      "tagNight": "SYS:NACHT",
+      "title": "Placeholder title — module M12",
+      "body": ["Placeholder copy. Final text follows in module M12."],
+      "meta": ["PLACEHOLDER", "V001"]
+    },
+    "0004": {
+      "tag": "PROJECTS",
+      "tagNight": "SYS:NACHT",
+      "title": "Placeholder title — module M12",
+      "body": ["Placeholder copy. Final text follows in module M12."],
+      "meta": ["PLACEHOLDER", "V001"],
+      "projects": [
+        { "name": "This website", "status": "live", "display": "" },
+        { "name": "A second project is in progress. Details will follow.", "status": "in progress", "display": "" }
+      ]
+    },
+    "0005": {
+      "tag": "PRODUCTS",
+      "tagNight": "SYS:NACHT",
+      "title": "Placeholder title — module M12",
+      "body": ["Placeholder copy. Final text follows in module M12."],
+      "meta": ["PLACEHOLDER", "V001"]
+    }
+  },
+  "legal": {
+    "lines": [
+      "AISaEOS Oy",
+      "c/o Philip Wagner, Ahvenanmaankatu 2 H 34, 20740 Turku, Finland",
+      "Y-tunnus 3412141-7",
+      "ALV-nro FI34121417",
+      "Kotipaikka Turku"
+    ],
+    "email": "contact@aisaeos.com"
+  },
+  "a11y": {
+    "0001": "System",
+    "0002": "About",
+    "0003": "Values",
+    "0004": "Projects",
+    "0005": "Products",
+    "legal": "Legal information",
+    "home": "Back to start"
+  }
+}
