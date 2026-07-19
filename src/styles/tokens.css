@@ -1,0 +1,28 @@
+:root {
+  /* Basis */
+  --color-bg:            #1a1a1a;
+  --color-fg:            #f4f4f6;
+
+  /* Akzente */
+  --color-lila:          #9933ff;  /* System — Struktur, nicht Text */
+  --color-lila-text:     #a866ff;  /* System — als Schrift */
+  --color-pink:          #ff3399;  /* Interaktion */
+  --color-gruen:         #33ff33;  /* Status */
+
+  /* Grau-Skala */
+  --color-gray-25:       #505051;  /* Linien, Flächen — nie Text */
+  --color-gray-50:       #878788;  /* Sekundärtext */
+  --color-gray-75:       #bdbdbf;  /* Fließtext gedimmt */
+
+  /* Typografie */
+  --font-primary:        'Futura', 'Century Gothic', 'Avenir Next', sans-serif;
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-bold:    700;
+
+  /* Satz */
+  --leading-body:        1.6;
+  --leading-display:     1.15;
+  --tracking-caps:       0.08em;
+  --tracking-logo:       0.042em;  /* CD v0.4, geprüft über alle Größen */
+}
