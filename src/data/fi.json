@@ -1,0 +1,63 @@
+{
+  "meta": { "lang": "fi", "version": "V001" },
+  "panels": {
+    "0001": {
+      "tag": "JÄRJESTELMÄ · ONLINE",
+      "tagNight": "SYS:NACHT",
+      "title": "Väliaikainen otsikko — moduuli M12",
+      "body": ["Väliaikainen teksti. Lopullinen sisältö seuraa moduulissa M12."],
+      "meta": ["VÄLIAIKAINEN", "V001"]
+    },
+    "0002": {
+      "tag": "TIETOA",
+      "tagNight": "SYS:NACHT",
+      "title": "Väliaikainen otsikko — moduuli M12",
+      "body": ["Väliaikainen teksti. Lopullinen sisältö seuraa moduulissa M12."],
+      "meta": ["VÄLIAIKAINEN", "V001"]
+    },
+    "0003": {
+      "tag": "ARVOT",
+      "tagNight": "SYS:NACHT",
+      "title": "Väliaikainen otsikko — moduuli M12",
+      "body": ["Väliaikainen teksti. Lopullinen sisältö seuraa moduulissa M12."],
+      "meta": ["VÄLIAIKAINEN", "V001"]
+    },
+    "0004": {
+      "tag": "PROJEKTIT",
+      "tagNight": "SYS:NACHT",
+      "title": "Väliaikainen otsikko — moduuli M12",
+      "body": ["Väliaikainen teksti. Lopullinen sisältö seuraa moduulissa M12."],
+      "meta": ["VÄLIAIKAINEN", "V001"],
+      "projects": [
+        { "name": "Tämä verkkosivusto", "status": "live", "display": "" },
+        { "name": "Toinen projekti on käynnissä. Lisätiedot seuraavat.", "status": "käynnissä", "display": "" }
+      ]
+    },
+    "0005": {
+      "tag": "TUOTTEET",
+      "tagNight": "SYS:NACHT",
+      "title": "Väliaikainen otsikko — moduuli M12",
+      "body": ["Väliaikainen teksti. Lopullinen sisältö seuraa moduulissa M12."],
+      "meta": ["VÄLIAIKAINEN", "V001"]
+    }
+  },
+  "legal": {
+    "lines": [
+      "AISaEOS Oy",
+      "c/o Philip Wagner, Ahvenanmaankatu 2 H 34, 20740 Turku, Finland",
+      "Y-tunnus 3412141-7",
+      "ALV-nro FI34121417",
+      "Kotipaikka Turku"
+    ],
+    "email": "contact@aisaeos.com"
+  },
+  "a11y": {
+    "0001": "Järjestelmä",
+    "0002": "Tietoa",
+    "0003": "Arvot",
+    "0004": "Projektit",
+    "0005": "Tuotteet",
+    "legal": "Oikeudelliset tiedot",
+    "home": "Takaisin alkuun"
+  }
+}
