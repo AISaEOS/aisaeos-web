@@ -1,0 +1,5 @@
+# AISaEOS
+
+> AISaEOS Oy is a Turku-based company specialising in the integration and support of artificial intelligence in the IT sector. We consult, and we build custom and in-house software solutions grounded in AI technology — to optimise processes, improve efficiency, and enable new approaches to decision-making and automation.
+
+The website consists of six sections: system, about, values, projects, products, and legal information. All content is present in the static HTML; the three language domains aisaeos.com (English), aisaeos.de (German), and aisaeos.fi (Finnish) serve the same document.
