@@ -2,15 +2,55 @@
 import '../styles/tokens.css';
 import '../styles/fonts.css';
 import '../styles/global.css';
+import de from '../data/de.json';
+import en from '../data/en.json';
+import fi from '../data/fi.json';
+import Head from '../components/Head.astro';
+import IconNav from '../components/IconNav.astro';
+import Panel from '../components/Panel.astro';
+import StatusBar from '../components/StatusBar.astro';
+import Wordmark from '../components/Wordmark.astro';
+
+const sections = [
+	{ id: 'system', code: '0001' },
+	{ id: 'about', code: '0002' },
+	{ id: 'values', code: '0003' },
+	{ id: 'projects', code: '0004' },
+	{ id: 'products', code: '0005' },
+] as const;
+
+const data = { en, de, fi };
 ---
 
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>AISaEOS</title>
+		<Head />
 	</head>
-	<body>
-		<h1>AISaEOS</h1>
+	<body class="is-ground">
+		<Wordmark />
+		<button type="button" data-action="home" class="home-dot" aria-label={en.a11y.home}></button>
+		<div class="stage" aria-hidden="true">
+			<div class="stage-tag"></div>
+			<div class="stage-title"></div>
+			<div class="stage-body"></div>
+			<div class="stage-meta"></div>
+		</div>
+		<IconNav labels={en.a11y} />
+		<main>
+			{sections.map((section) => (
+				<Panel
+					id={section.id}
+					code={section.code}
+					tag={en.panels[section.code].tag}
+					title={en.panels[section.code].title}
+					body={en.panels[section.code].body}
+					meta={en.panels[section.code].meta}
+					projects={section.code === '0004' ? en.panels['0004'].projects : undefined}
+				/>
+			))}
+			<Panel id="legal" code="0006" title={en.a11y.legal} legal={en.legal} />
+		</main>
+		<StatusBar />
+		<script type="application/json" id="aisaeos-data" set:html={JSON.stringify(data)} />
 	</body>
 </html>

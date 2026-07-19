@@ -1,0 +1,40 @@
+---
+interface Props {
+	id: string;
+	code: string;
+	tag?: string;
+	title: string;
+	body?: string[];
+	meta?: string[];
+	projects?: { name: string; status: string; display: string }[];
+	legal?: { lines: string[]; email: string };
+}
+const { id, code, tag, title, body = [], meta = [], projects, legal } = Astro.props;
+---
+<section id={id} data-code={code} tabindex="-1">
+	{tag && <p class="panel-tag">{tag}</p>}
+	<h2 class="panel-title">{title}</h2>
+	{body.map((paragraph) => <p>{paragraph}</p>)}
+	{projects && (
+		<ul class="panel-projects">
+			{projects.map((project) => (
+				<li><span class="project-name">{project.name}</span> · <span class="project-status">{project.status}</span></li>
+			))}
+		</ul>
+	)}
+	{meta.length > 0 && (
+		<ul class="panel-meta">
+			{meta.map((item) => <li>{item}</li>)}
+		</ul>
+	)}
+	{legal && (
+		<>
+			<address>
+				<p>{legal.lines[0]}</p>
+				<p>{legal.lines[1]}</p>
+			</address>
+			{legal.lines.slice(2).map((line) => <p>{line}</p>)}
+			<p><a href={`mailto:${legal.email}`}>{legal.email}</a></p>
+		</>
+	)}
+</section>
