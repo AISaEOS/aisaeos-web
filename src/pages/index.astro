@@ -20,6 +20,8 @@ const sections = [
 ] as const;
 
 const data = { en, de, fi };
+// "<" is escaped so the embedded JSON can never terminate the script element.
+const serializedData = JSON.stringify(data).replace(/</g, '\\u003c');
 ---
 
 <html lang="en">
@@ -51,6 +53,6 @@ const data = { en, de, fi };
 			<Panel id="legal" code="0006" title={en.a11y.legal} legal={en.legal} />
 		</main>
 		<StatusBar />
-		<script type="application/json" id="aisaeos-data" set:html={JSON.stringify(data)} />
+		<script type="application/json" id="aisaeos-data" set:html={serializedData} />
 	</body>
 </html>

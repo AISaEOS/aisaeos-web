@@ -38,6 +38,10 @@ a {
   color: var(--color-pink);
 }
 
+address {
+  font-style: normal;
+}
+
 /* Wordmark */
 .wordmark button {
   font-size: 56px;
@@ -229,6 +233,7 @@ html.js main > section {
 }
 
 html.js main {
+  position: absolute;
   padding: 0;
   max-width: none;
 }
@@ -275,7 +280,7 @@ html.js body.is-panel .wordmark button {
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 490px) {
   .statusbar {
     grid-template-columns: 1fr auto;
     row-gap: 7px;
