@@ -1,0 +1,34 @@
+---
+interface Props {
+	labels: Record<'0001' | '0002' | '0003' | '0004' | '0005', string>;
+}
+const { labels } = Astro.props;
+---
+<nav class="icon-nav" aria-label="Sections">
+	<button type="button" data-panel="0001" aria-label={labels['0001']}>
+		<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+			<circle cx="14" cy="14" r="9"/>
+		</svg>
+	</button>
+	<button type="button" data-panel="0002" aria-label={labels['0002']}>
+		<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+			<circle cx="14" cy="14" r="9"/>
+			<circle cx="14" cy="14" r="2.5" fill="currentColor" stroke="none"/>
+		</svg>
+	</button>
+	<button type="button" data-panel="0003" aria-label={labels['0003']}>
+		<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+			<rect x="5" y="5" width="18" height="18"/>
+		</svg>
+	</button>
+	<button type="button" data-panel="0004" aria-label={labels['0004']}>
+		<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+			<polygon points="14,5 23,23 5,23"/>
+		</svg>
+	</button>
+	<button type="button" data-panel="0005" aria-label={labels['0005']}>
+		<svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5">
+			<polygon points="5,5 23,5 14,23"/>
+		</svg>
+	</button>
+</nav>
