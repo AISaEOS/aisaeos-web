@@ -54,5 +54,8 @@ const serializedData = JSON.stringify(data).replace(/</g, '\\u003c');
 		</main>
 		<StatusBar />
 		<script type="application/json" id="aisaeos-data" set:html={serializedData} />
+		<script>
+			import '../scripts/main.ts';
+		</script>
 	</body>
 </html>
