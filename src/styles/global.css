@@ -38,6 +38,11 @@ a {
   color: var(--color-pink);
 }
 
+:focus-visible {
+  outline: 1.5px solid var(--color-pink);
+  outline-offset: 3.5px;
+}
+
 address {
   font-style: normal;
 }
@@ -62,8 +67,11 @@ address {
   height: 28px;
 }
 
+/* The rest state reserves the active frame; activation only changes color. */
 .icon-nav button {
   position: relative;
+  padding: 7px;
+  border: 1.5px solid transparent;
   color: var(--color-fg);
   animation: icon-rest 4.2s ease-in-out infinite alternate;
 }
@@ -79,8 +87,7 @@ address {
 }
 
 .icon-nav button.is-active {
-  padding: 7px;
-  border: 1.5px solid var(--color-fg);
+  border-color: var(--color-fg);
 }
 
 .icon-nav button.is-active::after {
@@ -145,6 +152,11 @@ main section > * + * {
 /* Stage skeleton */
 .stage {
   max-width: 70ch;
+  transition: opacity 21ms linear;
+}
+
+.stage.is-fading {
+  opacity: 0;
 }
 
 .stage > * + * {
@@ -279,6 +291,31 @@ html.js body.is-panel {
 
 html.js body.is-panel .wordmark button {
   font-size: 28px;
+}
+
+/* Reduced motion: the active section replaces the stage.
+   Anatomy styles apply to sections and stage alike. */
+html.js main > section.is-shown {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+}
+
+html.js.reduce-motion body.is-panel main {
+  position: static;
+  width: 100%;
+  max-width: 70ch;
+  padding: 0;
+}
+
+html.js.reduce-motion body.is-panel .icon-nav {
+  order: 1;
+}
+
+html.js.reduce-motion body.is-panel .stage {
+  display: none;
 }
 
 /* Mobile */
