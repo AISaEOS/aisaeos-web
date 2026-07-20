@@ -295,3 +295,17 @@ html.js body.is-panel .wordmark button {
     padding-bottom: 84px;
   }
 }
+
+/* Motion gate (CSS side) — mirrors src/scripts/motion.ts.
+   Disables the icon loop and all transitions under reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .icon-nav button {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
