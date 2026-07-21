@@ -77,6 +77,12 @@ function clearStage(): void {
   });
 }
 
+// Segment texts of the about panel in source order (tag, title, body
+// paragraphs, meta), used to build the parallel-language altSegments.
+function aboutSegmentTexts(panel: PanelEntry): string[] {
+  return [panel.tag, panel.title, ...panel.body, panel.meta.join(' · ')];
+}
+
 // Builds the display segments for a panel from the embedded JSON
 // (parsed once, cached). Display order: tag, title, body paragraphs,
 // project entries, meta. Legal (0006): the five lines plus the email.
@@ -103,6 +109,12 @@ export function buildRenderData(code: PanelCode, lang: Lang): PanelRenderData {
       }
     }
     segments.push({ zone: 'meta', text: panel.meta.join(' · '), el: stageZone('meta') });
+  }
+  if (code === '0002') {
+    const others = (['en', 'de', 'fi'] as const).filter((l) => l !== lang);
+    const own = aboutSegmentTexts(data.panels['0002']);
+    const altSegments = own.map((_text, i) => others.map((l) => aboutSegmentTexts(embeddedData()[l].panels['0002'])[i]));
+    return { code, segments, altSegments };
   }
   return { code, segments };
 }
