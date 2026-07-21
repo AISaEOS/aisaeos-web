@@ -1,6 +1,8 @@
 import { classicMode, FADE_MS, start, stop } from './engine/generator';
-import type { PanelCode, PanelRenderData, Segment } from './engine/types';
+import type { GenMode, PanelCode, PanelRenderData, Segment } from './engine/types';
 import { reducedMotion } from './motion';
+
+type ModeResolver = (code: PanelCode) => GenMode;
 
 export type { PanelCode } from './engine/types';
 
@@ -125,15 +127,19 @@ function applyGroundClasses(): void {
   delete document.body.dataset.activePanel;
 }
 
+// Injected by the composition root; defaults to classic growth.
+let resolveMode: ModeResolver = classicMode;
+
 function beginGeneration(code: PanelCode): void {
-  start(classicMode(code), buildRenderData(code, 'en'));
+  start(resolveMode(code), buildRenderData(code, 'en'));
 }
 
 export function getState(): Readonly<PageState> {
   return state;
 }
 
-export function initState(): void {
+export function initState(resolver?: ModeResolver): void {
+  if (resolver) resolveMode = resolver;
   embeddedData();
 }
 

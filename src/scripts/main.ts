@@ -1,3 +1,4 @@
+import { modeFor } from './modes';
 import { onMotionChange, reducedMotion } from './motion';
 import { initNav } from './nav';
 import { initState } from './state';
@@ -10,5 +11,5 @@ function applyMotionPreference(reduced: boolean): void {
 
 applyMotionPreference(reducedMotion());
 onMotionChange(applyMotionPreference);
-initState();
+initState(modeFor);
 initNav();
