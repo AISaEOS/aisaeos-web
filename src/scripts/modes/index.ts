@@ -1,5 +1,6 @@
 import { classicMode } from '../engine/generator';
 import type { GenMode, PanelCode } from '../engine/types';
+import { modeAbout } from './modeAbout';
 import { modeLegal } from './modeLegal';
 import { modeProducts } from './modeProducts';
 import { modeProjects } from './modeProjects';
@@ -9,6 +10,7 @@ import { modeValues } from './modeValues';
 // Panel personalities. Panels without an entry fall back to classic growth.
 const registry = new Map<PanelCode, GenMode>([
   ['0001', modeSystem()],
+  ['0002', modeAbout()],
   ['0003', modeValues()],
   ['0004', modeProjects()],
   ['0005', modeProducts()],
