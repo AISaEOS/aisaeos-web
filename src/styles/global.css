@@ -179,6 +179,12 @@ main section > * + * {
   }
 }
 
+/* System mode: faint bracket flickering at the writing position, in the
+   running text color. */
+.system-bracket {
+  opacity: 0.4;
+}
+
 /* Home dot (mobile panel state) */
 .home-dot {
   display: none;
