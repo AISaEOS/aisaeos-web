@@ -217,6 +217,7 @@ function fadeToPanel(code: PanelCode, focus: boolean): void {
 export function refreshView(): void {
   if (state.view !== 'panel' || state.active === null || state.busy) return;
   if (reducedMotion()) return;
+  stop();
   fadeToPanel(state.active, false);
 }
 
