@@ -222,6 +222,15 @@ main section > * + * {
   gap: 14px;
 }
 
+/* Showing the active language is state; hover on the options is interaction. */
+.statusbar-lang button {
+  color: var(--color-gray-50);
+}
+
+.statusbar-lang button[aria-pressed="true"] {
+  color: var(--color-fg);
+}
+
 .statusbar-lang button:hover,
 .statusbar-lang button:focus-visible {
   color: var(--color-pink);
