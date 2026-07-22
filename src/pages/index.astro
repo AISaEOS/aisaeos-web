@@ -52,7 +52,7 @@ const serializedData = JSON.stringify(data).replace(/</g, '\\u003c');
 			))}
 			<Panel id="legal" code="0006" title={en.a11y.legal} legal={en.legal} />
 		</main>
-		<StatusBar />
+		<StatusBar legalLabel={en.a11y.legal} />
 		<script type="application/json" id="aisaeos-data" set:html={serializedData} />
 		<script>
 			import '../scripts/main.ts';

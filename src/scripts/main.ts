@@ -1,3 +1,4 @@
+import { getLang, initLang } from './lang';
 import { modeFor } from './modes';
 import { onMotionChange, reducedMotion } from './motion';
 import { initNav } from './nav';
@@ -11,5 +12,6 @@ function applyMotionPreference(reduced: boolean): void {
 
 applyMotionPreference(reducedMotion());
 onMotionChange(applyMotionPreference);
-initState(modeFor);
+initState(modeFor, getLang);
+initLang();
 initNav();
