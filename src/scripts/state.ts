@@ -3,11 +3,12 @@ import type { GenMode, PanelCode, PanelRenderData, Segment } from './engine/type
 import { reducedMotion } from './motion';
 
 type ModeResolver = (code: PanelCode) => GenMode;
+type LangResolver = () => Lang;
 
 export type { PanelCode } from './engine/types';
 
-type Lang = 'en' | 'de' | 'fi';
-type ContentCode = Exclude<PanelCode, '0006'>;
+export type Lang = 'en' | 'de' | 'fi';
+export type ContentCode = Exclude<PanelCode, '0006'>;
 
 interface ProjectEntry {
   name: string;
@@ -24,9 +25,11 @@ interface PanelEntry {
   projects?: ProjectEntry[];
 }
 
-interface LangData {
+export interface LangData {
+  meta: { lang: Lang; version: string };
   panels: Record<ContentCode, PanelEntry>;
   legal: { lines: string[]; email: string };
+  a11y: Record<ContentCode | 'legal' | 'home', string>;
 }
 
 type EmbeddedData = Record<Lang, LangData>;
@@ -49,6 +52,11 @@ function embeddedData(): EmbeddedData {
     dataCache = JSON.parse(raw) as EmbeddedData;
   }
   return dataCache;
+}
+
+// Read access to the embedded language data (parsed once, cached).
+export function getData(lang: Lang): LangData {
+  return embeddedData()[lang];
 }
 
 function stageRoot(): HTMLElement {
@@ -141,17 +149,20 @@ function applyGroundClasses(): void {
 
 // Injected by the composition root; defaults to classic growth.
 let resolveMode: ModeResolver = classicMode;
+// Injected by the composition root; the active language lives in lang.ts.
+let resolveLang: LangResolver = () => 'en';
 
 function beginGeneration(code: PanelCode): void {
-  start(resolveMode(code), buildRenderData(code, 'en'));
+  start(resolveMode(code), buildRenderData(code, resolveLang()));
 }
 
 export function getState(): Readonly<PageState> {
   return state;
 }
 
-export function initState(resolver?: ModeResolver): void {
-  if (resolver) resolveMode = resolver;
+export function initState(modeResolver?: ModeResolver, langResolver?: LangResolver): void {
+  if (modeResolver) resolveMode = modeResolver;
+  if (langResolver) resolveLang = langResolver;
   embeddedData();
 }
 
@@ -179,6 +190,12 @@ export function openPanel(code: PanelCode): boolean {
     return true;
   }
   // Panel to panel: fade the stage out, then rebuild and regenerate.
+  fadeToPanel(code, true);
+  return true;
+}
+
+// Fade the stage out, then rebuild and regenerate the target panel.
+function fadeToPanel(code: PanelCode, focus: boolean): void {
   state.busy = true;
   stageRoot().classList.add('is-fading');
   fadeTimer = setTimeout(() => {
@@ -189,9 +206,18 @@ export function openPanel(code: PanelCode): boolean {
     state.active = code;
     state.busy = false;
     beginGeneration(code);
-    focusSection(code);
+    if (focus) focusSection(code);
   }, FADE_MS);
-  return true;
+}
+
+// Language switch: regenerate the visible area in the active language.
+// In the ground state the source switches silently; a pending transition
+// picks the new language up on its own. Under reduced motion the sections
+// already carry the new texts.
+export function refreshView(): void {
+  if (state.view !== 'panel' || state.active === null || state.busy) return;
+  if (reducedMotion()) return;
+  fadeToPanel(state.active, false);
 }
 
 // Returns to the ground state without a fade; the rebuild is the transition.
