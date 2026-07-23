@@ -1,8 +1,10 @@
+import { initCursor } from './cursor';
 import { getLang, initLang } from './lang';
 import { modeFor } from './modes';
 import { onMotionChange, reducedMotion } from './motion';
 import { initNav } from './nav';
 import { initState } from './state';
+import { initViewportBreath } from './viewport-breath';
 
 // Runtime entry point. Reflects the reduced-motion preference on the document
 // root as a single source and keeps it in sync with the OS setting.
@@ -15,3 +17,5 @@ onMotionChange(applyMotionPreference);
 initState(modeFor, getLang);
 initLang();
 initNav();
+initCursor();
+initViewportBreath();
